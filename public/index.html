@@ -1,0 +1,105 @@
+<html xml:lang="en">
+<head>
+	<title>Datos solmaforo</title>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link type="text/css" href="css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+</head>
+<body ng-app="tablegetterApp" ng-controller="homeController">
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar-header">
+		<a id="logo" href="/" class="navbar-brand">
+			<img src=""></img>
+		</a>
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+			<span class = "sr-only">Toggle navigation</span>
+			<span class = "icon-bar"></span>
+			<span class = "icon-bar"></span>
+			<span class = "icon-bar"></span>
+		</button>
+	</div>
+	<div class="navbar-collapse collapse" id="navbar-collapse">
+		<ul id="main-nav" class="nav navbar-nav navbar-right home-header">
+			<li class="active_city"><a class="active_city" href="#top" target="_self">HOME</a></li>
+		</ul>
+	</div>
+</nav>
+<div class="wrap">
+	<div id="top" class="page-section jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="chartContainer" style="height: 300px; width: 100%;">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Ver datos</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<form id="verdatosform" method="">
+						<input type="radio" name="dia_ver_datos" checked>Hoy</input>
+						<input type="radio" name="dia_ver_datos" id="radio_otro">Otro: 
+							<input id="date_ver_datos" name="date_ver_datos" class="datepickers" type="text"></input>
+						</input>
+						<button id="btnRefresh">Actualizar Grafico</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Bajar datos</h2>
+				</div>
+			</div>
+			<form action="/api/download" id="downloadform" method="post">
+				<input name="ubicacion" value="Pucon" style="display:none;"></input>
+				<script>
+					$(function() {
+						$(".datepickers").datepicker({ dateFormat: 'dd/mm/yy' });
+						$("#date_ver_datos").datepicker('setDate', new Date());
+						$("#date_start").datepicker('setDate', new Date());
+						$("#date_end").datepicker('setDate', new Date());
+					});
+				</script>
+				<div class="row">
+					<div class="col-md-2">Fecha inicio</div>
+					<div class="col-md-2">
+						<input id="date_start" name="date_start" class="datepickers" type="text"></input>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">Fecha fin</div>
+					<div class="col-md-2">
+						<input id="date_end" name="date_end" class="datepickers" type="text"></input>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<button id="btnDownload" type="submit">Bajar Datos</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+</div>
+
+<footer class="footer container">
+	<div class="row" style="text-align:center;">
+		<a href="/"><span class="footer-item">Home</span></a>
+	</div>
+</footer>  
+
+<script type="text/javascript" src="js/canvasjs.min.js"></script>
+<script type="text/javascript" src="js/chart.js"></script>
+</body>
+</html>
