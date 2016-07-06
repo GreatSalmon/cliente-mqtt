@@ -4,5 +4,5 @@ Web app that receives data coming from a [Solmaforo](https://github.com/GreatSal
 
 Full code is not publicly available.
 
-See working page [here](clientemqtt-icalma.rhcloud.com).
+See working page [here](http://clientemqtt-icalma.rhcloud.com).
 
